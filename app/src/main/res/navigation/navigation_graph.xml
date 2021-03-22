@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.intellifyhomeassignment.UI.Fragments.ForgetPasswordFragment"
+        android:label="fragment_forgetpassword"
+        tools:layout="@layout/fragment_forgetpassword" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="com.example.intellifyhomeassignment.UI.Fragments.ItemDetailsFragment"
+        android:label="fragment_itemdetails"
+        tools:layout="@layout/fragment_itemdetails" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.intellifyhomeassignment.UI.Fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_userListFragment"
+            app:destination="@id/userListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.example.intellifyhomeassignment.UI.Fragments.RegistrationFragment"
+        android:label="fragment_registration"
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userListFragment"
+        android:name="com.example.intellifyhomeassignment.UI.Fragments.UserListFragment"
+        android:label="fragment_userlist"
+        tools:layout="@layout/fragment_userlist" >
+        <action
+            android:id="@+id/action_userListFragment_to_itemDetailsFragment"
+            app:destination="@id/itemDetailsFragment" />
+        <action
+            android:id="@+id/action_userListFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+</navigation>

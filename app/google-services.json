@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "569497822840",
+    "project_id": "intellifyassignment-2475f",
+    "storage_bucket": "intellifyassignment-2475f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569497822840:android:821a024a086e5af6acaf8d",
+        "android_client_info": {
+          "package_name": "com.example.intellifyhomeassignment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569497822840-76poufqu67p0dk8h8qrv3sgj55eim0ig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj1KCkoONW29cRV2zPpL_oNofH8EqdfOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569497822840-76poufqu67p0dk8h8qrv3sgj55eim0ig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
