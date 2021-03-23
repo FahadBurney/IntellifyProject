@@ -38,6 +38,7 @@ dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-auth:20.0.3'
+    implementation 'com.google.firebase:firebase-database:19.7.0'
     def nav_version = "2.3.4"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
