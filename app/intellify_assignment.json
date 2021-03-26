@@ -1,0 +1,21 @@
+
+{
+  "User" : {
+    "ltIT1RcsWLQ50sPpxkykzJjLJTA2" : {
+      "age" : "39",
+      "city" : "Boston",
+      "email" : "fhadbrunei@gmail.com",
+      "gender" : "Other",
+      "name" : "Steve rogers",
+      "password" : "pass426"
+    },
+    "yYeQn0qSjmSmy7yJmWHCsEoWb262" : {
+      "age" : "25",
+      "city" : "Mumbai",
+      "email" : "fahadburney112@gmail.com",
+      "gender" : "Male",
+      "name" : "Fahad bro",
+      "password" : "pass786"
+    }
+  }
+}

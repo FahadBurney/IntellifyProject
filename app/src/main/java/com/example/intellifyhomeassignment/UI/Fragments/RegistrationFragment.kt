@@ -42,80 +42,88 @@ class RegistrationFragment : Fragment(R.layout.fragment_registration), View.OnCl
         val password = editTextPassword.text.toString().trim()
         val email = edittextEmail.text.toString().trim()
         val age = edittextViewAge.text.toString().trim()
-        val gender = radioGroup.checkedRadioButtonId.toString().trim()
+        val selectedId=radioGroup.checkedRadioButtonId
+        var gender="male"
+        when(selectedId)
+        {
+            Male.id->gender="Male"
+            Female.id->gender="Female"
+            Other.id->gender="Other"
+        }
         val city = editTextCity.text.toString().trim()
         Log.d("GENDER", "gender : $gender")
 
         if (name.isEmpty()) {
-            edittextViewName.setError("Full Name is required")
+            edittextViewName.error = "Full Name is required"
             edittextViewName.requestFocus()
             return
         }
         if (age.isEmpty()) {
-            edittextViewAge.setError("Age is Required")
+            edittextViewAge.error = "Age is Required"
             edittextViewAge.requestFocus()
             return
         }
         if (email.isEmpty()) {
-            edittextEmail.setError("Email is Required")
+            edittextEmail.error = "Email is Required"
             edittextEmail.requestFocus()
             return
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            edittextEmail.setError("Please Provide Valid Email")
+            edittextEmail.error = "Please Provide Valid Email"
             edittextEmail.requestFocus()
             return
         }
         if (password.isEmpty()) {
-            editTextPassword.setError("Passsword is empty")
+            editTextPassword.error = "Passsword is empty"
             editTextPassword.requestFocus()
             return
         }
         if (password.length < 6) {
-            editTextPassword.setError("Enter password more than 6 characters")
+            editTextPassword.error = "Enter password more than 6 characters"
             editTextPassword.requestFocus()
             return
         }
         if (city.isEmpty()) {
-            editTextCity.setError("Please Enter City where you live")
+            editTextCity.error = "Please Enter City where you live"
             editTextCity.requestFocus()
             return
         }
-        progressBar.visibility = View.VISIBLE
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(object : OnCompleteListener<AuthResult> {
-                override fun onComplete(task: Task<AuthResult>) {
-                    if (task.isSuccessful) {
-                        val user = User(name, city, age, gender, email, password)
-                        FirebaseDatabase.getInstance().getReference("User")
-                            .child(FirebaseAuth.getInstance().currentUser.uid).setValue(user)
-                            .addOnCompleteListener(object : OnCompleteListener<Void> {
-                                override fun onComplete(task: Task<Void>) {
-                                    if (task.isSuccessful) {
-                                        Toast.makeText(
-                                            context,
-                                            "Successfully Registered Congrats ",
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                        progressBar.visibility = View.GONE
-                                    } else {
-                                        Toast.makeText(
-                                            context,
-                                            "Failed To Register, Try Again ",
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                        progressBar.visibility = View.GONE
-                                    }
-                                }
-                            })
-                    } else {
-                        Toast.makeText(context, "Failed To Register, Try Again ", Toast.LENGTH_LONG)
-                            .show()
-                        progressBar.visibility = View.GONE
-                    }
-                }
+        progressBar1.visibility = View.VISIBLE
+        editTextCity.clearFocus()
+        editTextPassword.clearFocus()
+        edittextEmail.clearFocus()
+        edittextViewAge.clearFocus()
+        edittextViewName.clearFocus()
 
-            })
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val user = User(name, city, age, gender, email, password)
+                    FirebaseDatabase.getInstance().getReference("User")
+                        .child(FirebaseAuth.getInstance().currentUser.uid).setValue(user)
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(
+                                    context,
+                                    "Successfully Registered Congrats ",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                progressBar1.visibility = View.GONE
+                            } else {
+                                Toast.makeText(
+                                    context,
+                                    "Failed To Register, Try Again ",
+                                    Toast.LENGTH_LONG
+                                ).show()
+                                progressBar1.visibility = View.GONE
+                            }
+                        }
+                } else {
+                    Toast.makeText(context, "Failed To Register, Try Again ", Toast.LENGTH_LONG)
+                        .show()
+                    progressBar1.visibility = View.GONE
+                }
+            }
 
 
     }

@@ -1,6 +1,18 @@
 package com.example.intellifyhomeassignment.UI
 
-class User(val name:String,val city:String,val age:String,val gender:String,val Email:String, val Password:String) {
+import java.io.Serializable
 
 
-}
+data class User(
+    var name: String? = null,
+    var age: String? = null,
+    var city: String? = null,
+    var gender: String? = null,
+    var email: String? = null,
+    var password: String? = null
+) :Serializable
+
+
+    // Null default values create a no-argument default constructor, which is needed
+    // for deserialization from a DataSnapshot.
+

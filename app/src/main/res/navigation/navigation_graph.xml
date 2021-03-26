@@ -18,7 +18,14 @@
         android:id="@+id/itemDetailsFragment"
         android:name="com.example.intellifyhomeassignment.UI.Fragments.ItemDetailsFragment"
         android:label="fragment_itemdetails"
-        tools:layout="@layout/fragment_itemdetails" />
+        tools:layout="@layout/fragment_itemdetails" >
+        <action
+            android:id="@+id/action_itemDetailsFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="users"
+            app:argType="com.example.intellifyhomeassignment.UI.User" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.intellifyhomeassignment.UI.Fragments.LoginFragment"
