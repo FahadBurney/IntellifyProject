@@ -11,10 +11,10 @@ import com.example.intellifyhomeassignment.R
 import com.example.intellifyhomeassignment.UI.User
 import kotlinx.android.synthetic.main.user_lists.view.*
 
-class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserDataViewHolder>()
-{
+class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserDataViewHolder>() {
     //creating inner class first
     inner class UserDataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
     // creating a diffCallBack as it is important for using with async List Differ
     private val differCallBack = object : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
@@ -25,30 +25,33 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.UserDataViewHolder>
             return oldItem == newItem
         }
     }
+
     // creating async list differ now
     val asyncDiffer = AsyncListDiffer(this, differCallBack)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserDataViewHolder {
         return UserDataViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.user_lists,
-            parent, false))
+                parent, false
+            )
+        )
 
 
     }
 
     override fun onBindViewHolder(holder: UserDataViewHolder, position: Int) {
-                val userData = asyncDiffer.currentList[position]
-holder.itemView.apply {
-    Name.text=userData.name
-    Age.text=userData.age
-    City.text=userData.city
-    Gender.text=userData.gender
-setOnClickListener{
-onItemClickListener?.let{
-it(User())
-}
-}
-}
+        val userData = asyncDiffer.currentList[position]
+        holder.itemView.apply {
+            Name.text = userData.name
+            Age.text = userData.age
+            City.text = userData.city
+            Gender.text = userData.gender
+            setOnClickListener {
+                onItemClickListener?.let {
+                    it(userData)
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -57,6 +60,7 @@ it(User())
 
 
 }
+
 private var onItemClickListener: ((User) -> Unit)? = null
 fun setOnItemClickListener(listener: (User) -> Unit) {
     Log.d("THEListener", "articlesUrl is $listener")

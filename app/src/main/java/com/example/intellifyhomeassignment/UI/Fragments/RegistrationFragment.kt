@@ -3,24 +3,14 @@ package com.example.intellifyhomeassignment.UI.Fragments
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
-import android.util.Patterns.EMAIL_ADDRESS
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.annotation.NonNull
-import androidx.annotation.VisibleForTesting
-import androidx.core.util.PatternsCompat.EMAIL_ADDRESS
+import androidx.fragment.app.Fragment
 import com.example.intellifyhomeassignment.R
 import com.example.intellifyhomeassignment.UI.User
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_registration.*
-import java.util.regex.Pattern
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration), View.OnClickListener {
     lateinit var mAuth: FirebaseAuth

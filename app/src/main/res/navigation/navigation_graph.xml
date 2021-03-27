@@ -23,7 +23,7 @@
             android:id="@+id/action_itemDetailsFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
         <argument
-            android:name="users"
+            android:name="user"
             app:argType="com.example.intellifyhomeassignment.UI.User" />
     </fragment>
     <fragment
